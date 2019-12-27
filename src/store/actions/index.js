@@ -6,12 +6,13 @@ const fetchToDos = (result) => ({
     result
 })
 
-export const  fetchToDosApi = () => async (dispatch) => {
+export const fetchToDosApi = () => async (dispatch) => {
+    console.log('fetchToDosApi');
     const res =await axios({
         method: 'get',
         url: 'https://jsonplaceholder.typicode.com/todos'
     });
-    dispatch(fetchToDos(res));
+    dispatch(fetchToDos(res.data));
 }
 
 // Users actions
@@ -20,10 +21,11 @@ const fetchUsers = (result) => ({
     result
 })
 
-export const  fetchUsersApi = () => async (dispatch) => {
+export const fetchUsersApi = () => async (dispatch) => {
+    console.log('fetchUsersApi');
     const res =await axios({
         method: 'get',
         url: 'https://jsonplaceholder.typicode.com/users'
     });
-    dispatch(fetchUsers(res));
+    dispatch(fetchUsers(res.data));
 }

@@ -16,8 +16,8 @@ const columns = [
     },
     {
       title: 'Completed',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'completed',
+      key: 'completed',
       render: isCompleted => (
         <Tag color={isCompleted ? 'green' : 'red'}>{isCompleted ? 'yes' : 'no'}</Tag>
       )

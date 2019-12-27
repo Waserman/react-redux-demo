@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchToDosApi, fetchUsersApi } from './store/actions'
 import './styles/App.scss'
 import { Layout, Menu } from 'antd';
 import UsersTable from './components/tables/UsersTable';
@@ -15,12 +17,23 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const { fetchUsers } = this.props;
+    fetchUsers();
+  }
+
   onMenuItemSelected = (selectedMenuItemKey) => {
     const { key } = selectedMenuItemKey;
+    if (key === 'users') {
+      console.log('this.props.fetchUsers()');
+      this.props.fetchUsers()
+    } else {
+      console.log('this.props.fetchToDos()');
+      this.props.fetchToDos()
+    }
     this.setState({selectedMenuItemKey: key})
   }
   render() {
-
     return (
       <Layout>
         <Header className="header">
@@ -56,4 +69,15 @@ class App extends React.Component {
   };
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUsers: todo => {
+      dispatch(fetchUsersApi());
+    },
+    fetchToDos: todo => {
+      dispatch(fetchToDosApi());
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

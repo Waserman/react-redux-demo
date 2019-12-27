@@ -1,4 +1,3 @@
-import React from 'react';
 import TableWrapper from './TableWrapper';
 import { connect } from 'react-redux';
 

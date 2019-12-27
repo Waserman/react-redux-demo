@@ -7,7 +7,7 @@ const TableWrapper = (columns) => {
             const { data } = this.props;
             console.log(data)
             return (
-                data ? 
+                !data ? 
                 <Spin size="large" /> :
                 <Table dataSource={data} columns={columns}>
                 </Table>
